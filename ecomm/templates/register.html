@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    @media only screen and (max-width: 360px) {
+     .lo{
+         width: 250px;
+         margin-left: 30px;
+         position: relative;
+         right: 45px;
+     }
+    }
+    @media only screen and (min-width:361px) and (max-width: 500px) {
+     .lo{
+         width: 300px;
+         position: relative;
+         right: 45px;
+     }
+    }
+    </style>
 <div class="container">
     <div class="p-5 m-5">
-        <div class="col-lg-5 mx-auto border rounded">
+        <div class="col-lg-5 lo mx-auto border rounded">
             <h3 class="alert alert-light border rounded">Create an Account</h3>
                 <form action="/register" method="POST">
                     {% csrf_token %}
