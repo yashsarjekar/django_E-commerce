@@ -141,5 +141,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/djdjjednjdn/djjie/kijnjhdh/Downloads/Dm/Tot/'
+MEDIA_URL = '/products_images/'
 MEDIA_ROOT = BASE_DIR
