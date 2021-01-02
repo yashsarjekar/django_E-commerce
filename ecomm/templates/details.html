@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+
+<div class="container" style="margin-top:100px">
+    <div class="border rounded p-4 m-4" style="margin-top:300px;padding-top:200px;">
+        {% if product %}
+        <p class="display-4">{{ product.title }}</p>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-10">
+                <img src="{{ product.images.url }}" height="500px"  class="card-img-top" alt="..." />
+            </div>
+            <div class="col-lg-6 col-md-6 col-10">
+                <p class="display-5">{{ product.description }} </p>
+                <br> 
+                <p class="display-6">{{ product.price|currency }}</p>
+            </div>
+        </div>
+        {% elif msg %}
+        <p class="display-4">{{ msg }}</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

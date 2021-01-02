@@ -8,6 +8,19 @@ class Index(View):
 
     def get(self,request):
         cart = request.session.get('cart')
+        prod_id = request.GET.get('details')
+        if prod_id:
+            try:
+                product = Product.objects.get(id = prod_id)
+                #print(product)
+                if product:
+                    return render(request,'details.html',{'product':product})
+                else:
+                    msg = 'The Page you are Trying to Access is Not Possible'
+                    return render(request,'details.html',{'msg':msg})
+            except Product.DoesNotExist:
+                msg = 'The Page you are Trying to Access is Not Possible'
+                return render(request,'details.html',{'msg':msg})
         if not cart:
             request.session['cart'] = {}
         prod = None
@@ -53,6 +66,12 @@ class Cart(View):
         print(cart_products)
         return render(request,'cart.html',{'products':cart_products})
 
+    def post(self,request):
+        pass
+
+class Detail(View):
+    def get(self,request):
+        pass
     def post(self,request):
         pass
     

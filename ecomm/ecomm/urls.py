@@ -19,13 +19,13 @@ from django.conf.urls.static import static
 from customers.views import Login,logout
 from orders.views import Checkout,Orders
 from . import settings
-from products.middleware.auth import auth_middleware 
+from products.middleware.auth import auth_middleware,check_middleware
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('products.urls')),
     path('register', include('customers.urls')),
     path('login',Login.as_view(),name='login'),
     path('logout',logout),
-    path('checkout',auth_middleware(Checkout.as_view())),
+    path('checkout',check_middleware(Checkout.as_view())),
     path('orders',auth_middleware(Orders.as_view()))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
